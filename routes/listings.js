@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const wrapasync=require("/Users/sumanareddy/Desktop/maj project/init/utils/wrapasync.js");
+const wrapasync=require("../utils/wrapasync.js");
 const { listingschema, reviewschema } = require('../schema.js')
-const Expresserror=require("/Users/sumanareddy/Desktop/maj project/init/utils/expresserror.js");
+const Expresserror=require("../utils/Expresserror.js");
 const Listing=require("../models/listing.js");
 const { isloggedin } = require("../middleware.js");
 const { validatelisting } = require("../middleware.js");
