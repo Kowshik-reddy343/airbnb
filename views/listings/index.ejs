@@ -1,0 +1,52 @@
+<% layout("/layouts/boilerplate")%>
+<style>
+  .gst{
+    display: none;
+  }
+ </style>
+ 
+<body>
+  <div class="form-check form-switch form-check-reverse">
+    <input class="form-check-input" type="checkbox" id="switchCheckReverse">
+    <label class="form-check-label" for="switchCheckReverse">display total after taxes</label>
+  </div>
+     <h3>all listings</h3>
+    <!-- <form method="GET" action="/listings/new">
+        <button>Create New Listing</button>
+      </form> -->
+      <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
+      <% for(let listing of allListings) { %>
+        <% for(let listing of allListings) { %>
+        
+          <div class="card col"><a href="/listings/<%=listing._id%>">
+        <img src="<%=listing.image%>" class="card-img-top" alt="listing_image" style="height: 20rem;">
+        <div class="card-img-overlay">asd</div>
+        <div class="card-body">
+          <h5 class="card-title"><%=listing.title%></h5>
+          <p class="card-text"><%=listing.description%>
+          <br><%=listing.price%> per night
+          <i class="gst">&nbsp; +18% GST</i>
+        <br><%=listing.location%>&nbsp;<%=listing.country%></p>
+        </div></a>
+        </div>
+      <% } %>
+      <% } %>
+      
+    </div>
+</body>
+<script>
+  const switchCheckReverse = document.getElementById('switchCheckReverse');
+  switchCheckReverse.addEventListener('change', function() {
+    const gstElements = document.querySelectorAll('.gst');
+    if (this.checked) {
+      gstElements.forEach(function(element) {
+        element.style.display = 'block';
+      });
+    } else {
+      gstElements.forEach(function(element) {
+        element.style.display = 'none';
+      });
+    }
+   
+  });
+</script>

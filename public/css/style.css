@@ -1,0 +1,77 @@
+body{
+    background-color: bisque;
+    padding-bottom:300px;
+}
+footer {
+    position:fixed !important;
+    left: 0 !important;
+    bottom: 0 !important;
+    width: 100%;
+    text-align: center;
+  }
+.navbar{
+    height: 5rem;
+    background-color: white;
+}
+.fa-compass{
+    color:red;
+    font-size: 2rem;
+}
+.navlink{
+    color: black !important;
+}
+.f-info-links a{
+    width: 100%;
+    text-decoration:none;
+    color: black;
+}
+.f-info-links a:hover{
+    text-decoration:underline;
+}
+.f-info-links{
+    width: 100%;
+   
+}
+.f-info-socials{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+   align-items: center;
+    justify-content: center;
+}
+.f-info{
+    text-align: center;
+    height: 8 rem;
+    background-color: grey;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: space-evenly;
+}
+.card{
+    border: none !important;
+    margin-bottom: 2rem;
+    opacity: 1;
+
+}
+.card-img-top{
+  border-radius: 1rem !important;
+  width: 100% !important;
+  
+}
+.card-body{
+    padding: 0 !important;
+}
+a{text-decoration: none !important;
+color: black !important;}
+.card-img-overlay{
+opacity: 0;
+}
+.card:hover{
+    opacity: 0.8;
+}
+.show-img{
+height: 40vh;
+}
+
+#map { position: absolute; height: 40vh;; width: 80vh; }

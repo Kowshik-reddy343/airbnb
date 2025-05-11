@@ -1,0 +1,84 @@
+<% layout("/layouts/boilerplate")%>
+
+<body>
+    <h3>listing details</h3>
+    <div class="row">
+      <div class="col-8 offset-2">
+    <div class="card" style="width: 48rem;">
+      <img src="<%=listing.image%>" class="card-img-top show-img" alt="listing_image">
+      <div class="card-body">
+      </div>
+    </div>
+    <ul>
+        <li>owned by <%=listing.owner.username%></li>
+        <li><%= listing.title %></li>
+        <li><%= listing.description %></li>
+        <li>&#8377; <%= listing.price.toLocaleString("en-IN") %></li>
+        <li><%= listing.location %></li>
+        <li><%= listing.country %></li>
+      </ul>
+      <br>
+      
+        
+      <br />
+      <a href="/listings/<%= listing._id %>/edit"><button>edit this listing</button> </a>
+      <br><br>
+      <form method="POST" action="/listings/<%=listing._id%>?_method=DELETE">
+        <button>Delete this listing</button>
+      </form>
+      
+      <br>
+     <hr>
+      <hr>
+      <h3>Comments</h3>
+      <form method="POST" action="/listings/<%=listing._id%>/reviews" novalidate class="needs-validation">
+        <div class="mb-3">
+          <label for="comment" class="form-label">Comment</label>
+          <input type="text" class="form-control" id="comment" name="review[comment]" required>
+        </div>
+        <div class="mb-3">
+          <label for="rating" class="form-label">Rating</label>
+          <input type="range"  id="rating" name="review[rating]" min="1" max="5">
+        </div >
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <div class="mb-3" ></div>
+      </form>
+      <br ><br>
+       <% if (listing.reviews.length >0) { %>
+         
+      <h3>Reviews</h3>
+      <ul>
+        <% for (let i = 0; i < listing.reviews.length; i++) { %>
+          <li>
+            <strong><%= listing.reviews[i].comment %></strong>
+            <p>by <%= listing.reviews[i].author.username %></p>
+            <p>Rating: <%= listing.reviews[i].rating %></p>
+            <form method="POST" action="/listings/<%= listing._id %>/reviews/<%= listing.reviews[i]._id %>?_method=DELETE">
+              <button>delete</button>
+            </form>
+          </li>
+        <% } %>
+      </ul>
+      <% } else { %>
+        <p>No reviews yet.</p>
+      <% } %>
+      <br>
+      <div class="mb-3 col-8 offset-2"> 
+        <h3>where you will be</h3>
+        <div id="map"></div><br> <br> <br> <br> <br> <br> <br> <br> <br>
+      </div>
+      
+      <script>
+        mapboxgl.accessToken = 'pk.eyJ1Ijoia293c2hpa3JlZGR5IiwiYSI6ImNtYWkxcWEzejBrbmQyaXIxazU4ODN0dzMifQ.BDetD8oM0ddI0qVz9sAYZg';
+          const map = new mapboxgl.Map({
+              container: 'map', // container ID
+              center: [-74.5, 40], // starting position [lng, lat]. Note that lat must be set between -90 and 90
+              zoom: 9 // starting zoom
+          });
+      </script>
+      
+
+    </div>
+    </div>
+   
+</body>
